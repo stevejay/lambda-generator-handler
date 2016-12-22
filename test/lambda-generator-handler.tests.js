@@ -1,6 +1,6 @@
 'use strict';
 
-const coroutineHandler = require('../index');
+const generatorHandler = require('../index');
 
 describe('lambda-generator-handler', function() {
     it('should run a handler that does not throw', function(done) {
@@ -18,7 +18,7 @@ describe('lambda-generator-handler', function() {
             }
         };
 
-        coroutineHandler(handler)('some event', null, cb);
+        generatorHandler(handler)('some event', null, cb);
     });
 
     it('should run a handler that throws an error that already has an error code message prefix', function(done) {
@@ -36,7 +36,7 @@ describe('lambda-generator-handler', function() {
             }
         };
 
-        coroutineHandler(handler)('some event', null, cb);
+        generatorHandler(handler)('some event', null, cb);
     });
 
     it('should run a handler that throws an error that does not have an error code message prefix', function(done) {
@@ -54,7 +54,7 @@ describe('lambda-generator-handler', function() {
             }
         };
 
-        coroutineHandler(handler)('some event', null, cb);
+        generatorHandler(handler)('some event', null, cb);
     });
 
     it('should run a handler that throws a stale data exception', function(done) {
@@ -76,6 +76,6 @@ describe('lambda-generator-handler', function() {
             }
         };
 
-        coroutineHandler(handler)('some event', null, cb);
+        generatorHandler(handler)('some event', null, cb);
     });
 });
