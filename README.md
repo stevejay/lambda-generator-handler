@@ -24,15 +24,16 @@ Create your AWS Lambda function as a generator and then export it wrapped
 by the `lambda-generator-handler` package.
 
 ```js
-const coroutine = require('lambda-generator-handler');
+const generatorHandler = require('lambda-generator-handler');
 
-function* someLambdaHandler(event) {
-    // do some stuff
-    // throw an error if something bad happens
-    return 'The Result';
+function* someGenerator(event) {
+    // 'event' arg is the AWS Lambda event object.
+    // Throw an error if something bad happens.
+    // Return a result as you normally do from a generator.
+    return 'the result';
 }
 
-module.exports.handler = coroutine(someLambdaHandler);
+module.exports.handler = generatorHandler(someGenerator);
 ```
 
 If your handler throws an exception, this wrapper catches it and 
