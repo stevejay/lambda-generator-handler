@@ -5,9 +5,9 @@ Run a generator function as an AWS Lambda function,  with added error handling
 [![npm version](https://badge.fury.io/js/lambda-generator-handler.svg)](https://badge.fury.io/js/lambda-generator-handler)
 [![Codeship Status for stevejay/lambda-generator-handler](https://app.codeship.com/projects/6cc5dcf0-aa06-0134-4024-3e211d17d664/status?branch=master)](https://app.codeship.com/projects/191800)
 [![Coverage Status](https://coveralls.io/repos/github/stevejay/lambda-generator-handler/badge.svg?branch=master)](https://coveralls.io/github/stevejay/lambda-generator-handler?branch=master)
-#[![bitHound Overall Score](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/score.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler)
-#[![bitHound Dependencies](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/dependencies.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler/master/dependencies/npm)
-#[![bitHound Dev Dependencies](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/devDependencies.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler/master/dependencies/npm)
+[![bitHound Overall Score](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/score.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler)
+[![bitHound Dependencies](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/dependencies.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/stevejay/lambda-generator-handler/badges/devDependencies.svg)](https://www.bithound.io/github/stevejay/lambda-generator-handler/master/dependencies/npm)
 ![license](https://img.shields.io/npm/l/lambda-generator-handler.svg)
 
 [![NPM](https://nodei.co/npm/lambda-generator-handler.png)](https://nodei.co/npm/lambda-generator-handler/)
