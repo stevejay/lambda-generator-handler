@@ -1,6 +1,7 @@
 # lambda-generator-handler
 
-Run a generator function as an AWS Lambda function,  with added error handling
+Run a generator function as an AWS Lambda function, when you
+are using lambda-proxy integration with API Gateway.
 
 [![npm version](https://badge.fury.io/js/lambda-generator-handler.svg)](https://badge.fury.io/js/lambda-generator-handler)
 [![Codeship Status for stevejay/lambda-generator-handler](https://app.codeship.com/projects/6cc5dcf0-aa06-0134-4024-3e211d17d664/status?branch=master)](https://app.codeship.com/projects/191800)
@@ -21,26 +22,29 @@ $ npm install --save lambda-generator-handler
 ## Usage
 
 Create your AWS Lambda function as a generator and then export it wrapped
-by the `lambda-generator-handler` package.
+by the `lambda-generator-handler` package. Note that this library is only
+for use when you have configured your endpoint in API Gateway to use
+lambda-proxy integration with your Lambda function. 
 
 ```js
 const generatorHandler = require('lambda-generator-handler');
 
-function* someGenerator(event) {
-    // 'event' arg is the AWS Lambda event object.
+function* someHandler(event) {
+    // The 'event' arg is the AWS Lambda event object.
     // Throw an error if something bad happens.
     // Return a result as you normally do from a generator.
-    return 'the result';
+    return { name: 'the result' };
 }
 
-module.exports.handler = generatorHandler(someGenerator);
+module.exports.handler = generatorHandler(someHandler);
 ```
 
 If your handler throws an exception, this wrapper catches it and 
-passes it as the error back to AWS Lambda. It checks that the error 
+returns an error response to AWS Lambda. It checks that the error 
 message includes a `serverless` framework type of error code prefix
-(e.g., the `[500]` prefix in the message `[500] Some error occurred`)
-and adds one if none exists.
+(e.g., the `[500]` prefix in the message `[500] Some error occurred`),
+and adds one if none exists. It also turns a DynamoDB 
+`ConditionalCheckFailedException` into a `400 Stale Data` error response.
 
 ## License
 
