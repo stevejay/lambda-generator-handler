@@ -1,9 +1,10 @@
 'use strict';
 
 const expect = require('chai').expect;
+const log = require('loglevel');
+const sinon = require('sinon');
 const constants = require('../lib/constants');
 const generatorHandler = require('../lib/generator-handler');
-const stubConsole = require('./stub-console');
 
 function runTest(handler, event, expected, done) {
     generatorHandler(handler)(event, null, (err, data) => {
@@ -22,8 +23,8 @@ function runTest(handler, event, expected, done) {
 }
 
 describe('lambda-generator-handler', () => {
-    beforeEach(() => stubConsole.stubError());
-    afterEach(() => stubConsole.unstubError());
+    beforeEach(() => sinon.stub(log, 'error').callsFake(() => {}));
+    afterEach(() => log.error.restore());
 
     it('should run a handler that returns successfully', done => {
         const handler = function*() { // eslint-disable-line require-yield

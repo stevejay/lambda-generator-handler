@@ -1,9 +1,10 @@
 'use strict';
 
 const expect = require('chai').expect;
+const log = require('loglevel');
+const sinon = require('sinon');
 const constants = require('../lib/constants');
 const errorHandler = require('../lib/error-handler');
-const stubConsole = require('./stub-console');
 
 function runTest(err, expected, done) {
     errorHandler(err, (err, data) => {
@@ -22,8 +23,8 @@ function runTest(err, expected, done) {
 }
 
 describe('error-handler', () => {
-    beforeEach(() => stubConsole.stubError());
-    afterEach(() => stubConsole.unstubError());
+    beforeEach(() => sinon.stub(log, 'error').callsFake(() => {}));
+    afterEach(() => log.error.restore());
 
     it('should handle 500 error', done => {
         const err = new Error('[500] Some error');
